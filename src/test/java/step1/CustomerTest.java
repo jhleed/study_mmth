@@ -7,6 +7,7 @@ import static org.junit.Assert.assertEquals;
 public class CustomerTest {
 
     private Customer customer = new Customer("이종호");
+    private Movie movie = new Movie("어벤져스");
 
 
     @Test
@@ -25,21 +26,8 @@ public class CustomerTest {
     }
 
     @Test
-    public void 세번째_테스트_addRental_설정() {
-        Movie movie = new Movie("어벤져스", 0);
-        int daysRented = 0;
-        Rental rental = new Rental(movie, daysRented);
-
-        customer.addRental(rental);
-        assertEquals("Rental Record for 이종호\n" +
-                "\t2.0(어벤져스)\n" +
-                "Amount owed is 2.0\n" +
-                "You earned 1 frequent renter pointers", customer.statement());
-    }
-
-    @Test
     public void 네번째_테스트_priceCode_Regular() {
-        Movie movie = new Movie("어벤져스", Movie.REGULAR);
+        movie.setPriceCode(Movie.REGULAR);
         int daysRented = 3;
         Rental rental = new Rental(movie, daysRented);
 
@@ -52,7 +40,7 @@ public class CustomerTest {
 
     @Test
     public void 다섯번째_테스트_priceCode_Regular() {
-        Movie movie = new Movie("어벤져스", Movie.NEW_RELEASE);
+        movie.setPriceCode(Movie.NEW_RELEASE);
         int daysRented = 3;
         Rental rental = new Rental(movie, daysRented);
 
@@ -65,7 +53,7 @@ public class CustomerTest {
 
     @Test
     public void 여섯번째_테스트_priceCode_Regular() {
-        Movie movie = new Movie("어벤져스", Movie.CHILDRENS);
+        movie.setPriceCode(Movie.CHILDRENS);
         int daysRented = 4;
         Rental rental = new Rental(movie, daysRented);
         customer.addRental(rental);
