@@ -33,7 +33,6 @@ class Customer {
         while (iterator.hasNext()) {
             Rental rental = iterator.next();
             // determine amounts for each line
-            double thisAmount = rental.getCharge();
 
             // add frequent renter points
             frequentRenterPoints++;
@@ -41,9 +40,9 @@ class Customer {
             if ((rental.getMovie().getPriceCode() == Movie.NEW_RELEASE) && rental.getDaysRented() > 1)
                 frequentRenterPoints++;
             // show figures
-            result += "\t" + String.valueOf(thisAmount) + "(" + rental.getMovie().getTitle() + ")" + "\n";
+            result += "\t" + String.valueOf(rental.getCharge()) + "(" + rental.getMovie().getTitle() + ")" + "\n";
 
-            totalAmount += thisAmount;
+            totalAmount += rental.getCharge();
         }
 
         result += "Amount owed is " + String.valueOf(totalAmount) + "\n";
