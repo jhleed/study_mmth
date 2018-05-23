@@ -6,6 +6,9 @@ import static org.junit.Assert.assertEquals;
 
 public class CustomerTest {
 
+    private Customer customer = new Customer("이종호");
+
+
     @Test
     public void 첫번째_테스트_이름_null() {
         Customer customer = new Customer(null);
@@ -16,7 +19,6 @@ public class CustomerTest {
 
     @Test
     public void 두번째_테스트_이름_설정() {
-        Customer customer = new Customer("이종호");
         assertEquals("Rental Record for 이종호\n" +
                 "Amount owed is 0.0\n" +
                 "You earned 0 frequent renter pointers", customer.statement());
@@ -24,7 +26,6 @@ public class CustomerTest {
 
     @Test
     public void 세번째_테스트_addRental_설정() {
-        Customer customer = new Customer("이종호");
         Movie movie = new Movie("어벤져스", 0);
         int daysRented = 0;
         Rental rental = new Rental(movie, daysRented);
@@ -38,7 +39,6 @@ public class CustomerTest {
 
     @Test
     public void 네번째_테스트_priceCode_Regular() {
-        Customer customer = new Customer("이종호");
         Movie movie = new Movie("어벤져스", Movie.REGULAR);
         int daysRented = 3;
         Rental rental = new Rental(movie, daysRented);
@@ -52,7 +52,6 @@ public class CustomerTest {
 
     @Test
     public void 다섯번째_테스트_priceCode_Regular() {
-        Customer customer = new Customer("이종호");
         Movie movie = new Movie("어벤져스", Movie.NEW_RELEASE);
         int daysRented = 3;
         Rental rental = new Rental(movie, daysRented);
@@ -66,11 +65,9 @@ public class CustomerTest {
 
     @Test
     public void 여섯번째_테스트_priceCode_Regular() {
-        Customer customer = new Customer("이종호");
         Movie movie = new Movie("어벤져스", Movie.CHILDRENS);
         int daysRented = 4;
         Rental rental = new Rental(movie, daysRented);
-
         customer.addRental(rental);
         assertEquals("Rental Record for 이종호\n" +
                 "\t3.0(어벤져스)\n" +
