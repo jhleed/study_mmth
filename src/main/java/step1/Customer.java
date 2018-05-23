@@ -24,17 +24,21 @@ class Customer {
 
     ;
 
+    /**
+     * 영화에 대한 계산서를 제공
+     *
+     * @return
+     */
     public String statement() {
-        double totalAmount = 0;
-        int frequentRenterPoints = 0;
+        double totalAmount = 0; //총 대여료
+        int frequentRenterPoints = 0; //포인트
         Iterator<Rental> iterator = rentals.iterator();
-        String result = "Rental Record for " + getName() + "\n";
+        String result = "Rental Record for " + getName() + "\n"; //결과값 (계산서)
 
         while (iterator.hasNext()) {
             double thisAmount = 0;
             Rental each = (Rental) iterator.next();
-            // determine amounts for each line
-
+            // 각 영화에 대한 요금을 결정한다.
             switch (each.getMovie().getPriceCode()) {
                 case Movie.REGULAR:
                     thisAmount += 2;
@@ -53,17 +57,18 @@ class Customer {
                     break;
             }
 
-            // add frequent renter points
+            // 포인트를 추가한다.
             frequentRenterPoints++;
-            // add bonus for a two day new release rental
+            // 최신 영화를 2일 이상 대여하는 경우 추가 포인트 제공
             if ((each.getMovie().getPriceCode() == Movie.NEW_RELEASE) && each.getDaysRented() > 1)
                 frequentRenterPoints++;
-            // show figures
+            // 이 대여에 대한 요금 계산결과 표시
             result += "\t" + String.valueOf(thisAmount) + "(" + each.getMovie().getTitle() + ")" + "\n";
 
             totalAmount += thisAmount;
         }
 
+        //footer 추가
         result += "Amount owed is " + String.valueOf(totalAmount) + "\n";
         result += "You earned " + String.valueOf(frequentRenterPoints) + " frequent renter pointers";
 

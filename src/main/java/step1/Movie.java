@@ -1,5 +1,8 @@
 package step1;
 
+/**
+ * 단순한 데이터 클래스 (영화)
+ */
 public class Movie {
     public static final int CHILDRENS = 2;
     public static final int REGULAR = 0;
