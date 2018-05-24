@@ -35,7 +35,7 @@ class Customer {
             // determine amounts for each line
 
             // add frequent renter points
-            frequentRenterPoints = getFrequentRenterPoints(rental);
+            frequentRenterPoints += getFrequentRenterPoints(rental);
             // show figures
             result += "\t" + String.valueOf(rental.getCharge()) + "(" + rental.getMovie().getTitle() + ")" + "\n";
 
