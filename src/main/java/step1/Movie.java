@@ -6,15 +6,10 @@ public class Movie {
     public static final int NEW_RELEASE = 1;
 
     private String title;
-    private int priceCode;
     private Price price;
 
     public Movie(String title) {
         this.title = title;
-    }
-
-    public int getPriceCode() {
-        return priceCode;
     }
 
     public void setPriceCode(int arg) {
@@ -41,12 +36,5 @@ public class Movie {
 
     int getFrequentRenterPoints(int daysRented) {
         return price.getFrequentRenterPoints(daysRented);
-        /*int frequentRenterPoints = 1;
-        if ((getPriceCode() == NEW_RELEASE) && daysRented > 1) {
-            frequentRenterPoints++;
-        }
-        return frequentRenterPoints;*/
     }
-
-    ;
 }

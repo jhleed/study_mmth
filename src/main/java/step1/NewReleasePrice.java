@@ -4,8 +4,7 @@ public class NewReleasePrice implements Price {
 
     @Override
     public double getCharge(int daysRented) {
-        double thisAmount = daysRented * 3;
-        return thisAmount;
+        return (double) (daysRented * 3);
     }
 
     @Override

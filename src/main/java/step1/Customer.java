@@ -11,8 +11,6 @@ class Customer {
         this.name = name;
     }
 
-    ;
-
     public void addRental(Rental rental) {
         _rentals.add(rental);
     }
@@ -20,8 +18,6 @@ class Customer {
     public String getName() {
         return name;
     }
-
-    ;
 
     public String statement() {
         String result = "Rental Record for " + getName() + "\n";
