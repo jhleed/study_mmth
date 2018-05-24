@@ -39,7 +39,7 @@ public class CustomerTest {
     }
 
     @Test
-    public void 다섯번째_테스트_priceCode_Regular() {
+    public void 다섯번째_테스트_priceCode_NEW_RELEASE() {
         movie.setPriceCode(Movie.NEW_RELEASE);
         int daysRented = 3;
         Rental rental = new Rental(movie, daysRented);
@@ -52,7 +52,7 @@ public class CustomerTest {
     }
 
     @Test
-    public void 여섯번째_테스트_priceCode_Regular() {
+    public void 여섯번째_테스트_priceCode_CHILDRENS() {
         movie.setPriceCode(Movie.CHILDRENS);
         int daysRented = 4;
         Rental rental = new Rental(movie, daysRented);
