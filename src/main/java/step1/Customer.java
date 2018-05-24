@@ -1,12 +1,11 @@
 package step1;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 class Customer {
     private String name;
-    private List<Rental> rentals = new ArrayList<>();
+    private List<Rental> _rentals = new ArrayList<>();
 
     public Customer(String name) {
         this.name = name;
@@ -15,7 +14,7 @@ class Customer {
     ;
 
     public void addRental(Rental rental) {
-        rentals.add(rental);
+        _rentals.add(rental);
     }
 
     public String getName() {
@@ -25,27 +24,27 @@ class Customer {
     ;
 
     public String statement() {
-        double totalAmount = 0;
         int frequentRenterPoints = 0;
-        Iterator<Rental> iterator = rentals.iterator();
         String result = "Rental Record for " + getName() + "\n";
-
-        while (iterator.hasNext()) {
-            Rental rental = iterator.next();
-            // determine amounts for each line
-
+        for (Rental rental : _rentals) {
             // add frequent renter points
             frequentRenterPoints += getFrequentRenterPoints(rental);
             // show figures
             result += "\t" + String.valueOf(rental.getCharge()) + "(" + rental.getMovie().getTitle() + ")" + "\n";
-
-            totalAmount += rental.getCharge();
         }
 
-        result += "Amount owed is " + String.valueOf(totalAmount) + "\n";
+        result += "Amount owed is " + String.valueOf(getTotalCharge()) + "\n";
         result += "You earned " + String.valueOf(frequentRenterPoints) + " frequent renter pointers";
 
         return result;
+    }
+
+    private double getTotalCharge() {
+        double totalAmount = 0;
+        for (Rental rental : _rentals) {
+            totalAmount += rental.getCharge();
+        }
+        return totalAmount;
     }
 
     private int getFrequentRenterPoints(Rental rental) {
